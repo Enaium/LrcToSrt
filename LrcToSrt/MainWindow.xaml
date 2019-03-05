@@ -1,0 +1,65 @@
+﻿<Window x:Class="LrcToSrt.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cv="clr-namespace:LrcToSrt"
+        Title="LrcToSrt" FontSize="14" Name="this" Height="500" Width="650" ResizeMode="NoResize" Background="#FF3C3F41" Foreground="#FF3C3F41">
+    <Window.Resources>
+        <cv:StringHiddenConverter x:Key="hideStringConverter" />
+    </Window.Resources>
+    <Grid Margin="3,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="113*"/>
+            <ColumnDefinition Width="134*"/>
+            <ColumnDefinition Width="224*"/>
+            <ColumnDefinition Width="170*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="97,10,41,0" Grid.Column="1" Grid.ColumnSpan="2">
+            <Button Name="BTN_Add" Content="添加" Width="100" Click="BTN_Add_Click" Background="#FF3C3F41" />
+            <Button Name="BTN_Del" Content="移除" Width="100" Click="BTN_Del_Click" Margin="10,0" IsEnabled="False" Background="#FF3C3F41" />
+        </StackPanel>
+        <Grid Grid.Row="1" Margin="0,5" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="30" />
+            </Grid.ColumnDefinitions>
+            <ListView Name="LV_Lrc" ItemsSource="{Binding Path=LrcList,ElementName=this}" SelectionMode="Extended" SelectionChanged="LV_Lrc_SelectionChanged" Background="#FF3C3F41" HorizontalAlignment="Left" Width="611" BorderBrush="#00000000">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="次序" Width="40" DisplayMemberBinding="{Binding Rank}" />
+                        <GridViewColumn Header="路径" Width="370" DisplayMemberBinding="{Binding Path=Path,Converter={StaticResource hideStringConverter}}" />
+                        <GridViewColumn Header="校时(±ms)">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Width="55" Text="{Binding Delay}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="歌曲时长">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBox Width="100" Text="{Binding Length}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <StackPanel Grid.Column="1">
+                <Button Name="BTN_Up" Width="25" Margin="0,50,0,20" Height="100" Content="↑" Click="BTN_Up_Click" Background="#FF3C3F41" />
+                <Button Name="BTN_Down" Width="25" Height="100" Content="↓" Click="BTN_Down_Click" Background="#FF3C3F41" />
+            </StackPanel>
+        </Grid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5,0,0,10" Grid.ColumnSpan="4">
+            <Label Content="文件名：" />
+            <TextBox Name="TBX_FileName" Width="150" Text="{Binding Path=FileName,ElementName=this}" Background="{x:Null}" />
+            <Button Name="BTN_Produce" Content="生成" Margin="20,0" Width="150" Click="BTN_Produce_Click" Background="#FF3C3F41" />
+        </StackPanel>
+        <TextBlock Grid.Row="3" Margin="5,2" Background="WhiteSmoke" Name="TB_Message" Grid.ColumnSpan="4" />
+    </Grid>
+</Window>
