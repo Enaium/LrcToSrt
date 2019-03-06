@@ -11,6 +11,12 @@ namespace LrcToSrt
             _Rank = rank;
         }
 
+        public LRC(char v1, int v2)
+        {
+            this.v1 = v1;
+            this.v2 = v2;
+        }
+
         public string Path
         {
             get { return _Path; }
@@ -58,5 +64,7 @@ namespace LrcToSrt
             }
         }
         private int _Delay;
+        private char v1;
+        private int v2;
     }
 }
