@@ -41,6 +41,7 @@ namespace LrcToSrt
             }
         }
         private string _FileName = "新建字幕文件.srt";
+        private string a;
 
         // 构造函数
         public MainWindow()
@@ -135,7 +136,7 @@ namespace LrcToSrt
             else
                 TB_Message.Text = "不需要移动!";
         }
-        
+
         #endregion
 
         #region 生成SRT
@@ -201,7 +202,8 @@ namespace LrcToSrt
             var preTime = baseTime;
             bool isFirstLine = true;
             string preStr = "";
-            StreamReader reader = new StreamReader(lrc.Path, Encoding.GetEncoding("GB2312"));
+            StreamReader reader = new StreamReader(lrc.Path, Encoding.UTF8);
+
             StreamWriter writer = new StreamWriter(stream, Encoding.UTF8);
             Regex timeReg = new Regex(@"(?<=^\[)(\d|\:|\.)+(?=])");
             Regex strReg = new Regex(@"(?<=]).+", RegexOptions.RightToLeft);
