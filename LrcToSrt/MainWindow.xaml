@@ -10,7 +10,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="113*"/>
             <ColumnDefinition Width="134*"/>
-            <ColumnDefinition Width="224*"/>
+            <ColumnDefinition Width="224"/>
             <ColumnDefinition Width="170*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -61,7 +61,7 @@
             <TextBox Name="TBX_FileName" Width="150" Text="{Binding Path=FileName,ElementName=this}" Background="{x:Null}" Foreground="White" />
             <Button Name="BTN_Produce" Content="生成" Margin="20,0" Width="150" Click="BTN_Produce_Click" Background="{x:Null}" Foreground="White" />
         </StackPanel>
-        <TextBlock Grid.Row="3" Margin="5,2" Background="WhiteSmoke" Name="TB_Message" Grid.ColumnSpan="4" />
+        <TextBlock Grid.Row="3" Margin="5,2" Background="#FF3C3F41" x:Name="TB_Message" Grid.ColumnSpan="4" Foreground="White" ><Run Background="Black"/></TextBlock>
         <Button x:Name="BTN_Helper" Content="视频教程" Click="BTN_Helper_Click" Background="{x:Null}" Foreground="White" Margin="66,7,4,3" Grid.Column="3" />
     </Grid>
 </Window>
