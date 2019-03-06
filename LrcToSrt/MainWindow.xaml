@@ -20,15 +20,16 @@
             <RowDefinition Height="25" />
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="97,10,41,0" Grid.Column="1" Grid.ColumnSpan="2">
-            <Button Name="BTN_Add" Content="添加" Width="100" Click="BTN_Add_Click" Background="#FF3C3F41" />
-            <Button Name="BTN_Del" Content="移除" Width="100" Click="BTN_Del_Click" Margin="10,0" IsEnabled="False" Background="#FF3C3F41" />
+            <Button Name="BTN_Add" Content="添加" Width="100" Click="BTN_Add_Click" Background="{x:Null}" Foreground="White" />
+            <Button Name="BTN_Del" Content="移除" Width="100" Click="BTN_Del_Click" Margin="10,0" IsEnabled="False" Background="{x:Null}" Foreground="White" />
         </StackPanel>
         <Grid Grid.Row="1" Margin="0,5" Grid.ColumnSpan="4">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
+                <ColumnDefinition Width="387*" />
+                <ColumnDefinition Width="224*"/>
                 <ColumnDefinition Width="30" />
             </Grid.ColumnDefinitions>
-            <ListView Name="LV_Lrc" ItemsSource="{Binding Path=LrcList,ElementName=this}" SelectionMode="Extended" SelectionChanged="LV_Lrc_SelectionChanged" Background="#FF3C3F41" HorizontalAlignment="Left" Width="611" BorderBrush="#00000000">
+            <ListView Name="LV_Lrc" ItemsSource="{Binding Path=LrcList,ElementName=this}" SelectionMode="Extended" SelectionChanged="LV_Lrc_SelectionChanged" Background="#FF3C3F41" HorizontalAlignment="Left" Width="611" BorderBrush="#00000000" Grid.ColumnSpan="2" Foreground="White">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="次序" Width="40" DisplayMemberBinding="{Binding Rank}" />
@@ -50,16 +51,17 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <StackPanel Grid.Column="1">
-                <Button Name="BTN_Up" Width="25" Margin="0,50,0,20" Height="100" Content="↑" Click="BTN_Up_Click" Background="#FF3C3F41" />
-                <Button Name="BTN_Down" Width="25" Height="100" Content="↓" Click="BTN_Down_Click" Background="#FF3C3F41" />
+            <StackPanel Grid.Column="2">
+                <Button Name="BTN_Up" Width="25" Margin="0,50,0,20" Height="100" Content="↑" Click="BTN_Up_Click" Background="{x:Null}" Foreground="White" />
+                <Button Name="BTN_Down" Width="25" Height="100" Content="↓" Click="BTN_Down_Click" Background="{x:Null}" Foreground="White" />
             </StackPanel>
         </Grid>
         <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5,0,0,10" Grid.ColumnSpan="4">
-            <Label Content="文件名：" />
-            <TextBox Name="TBX_FileName" Width="150" Text="{Binding Path=FileName,ElementName=this}" Background="{x:Null}" />
-            <Button Name="BTN_Produce" Content="生成" Margin="20,0" Width="150" Click="BTN_Produce_Click" Background="#FF3C3F41" />
+            <Label Content="文件名：" Foreground="White" />
+            <TextBox Name="TBX_FileName" Width="150" Text="{Binding Path=FileName,ElementName=this}" Background="{x:Null}" Foreground="White" />
+            <Button Name="BTN_Produce" Content="生成" Margin="20,0" Width="150" Click="BTN_Produce_Click" Background="{x:Null}" Foreground="White" />
         </StackPanel>
         <TextBlock Grid.Row="3" Margin="5,2" Background="WhiteSmoke" Name="TB_Message" Grid.ColumnSpan="4" />
+        <Button x:Name="BTN_Helper" Content="视频教程" Click="BTN_Helper_Click" Background="{x:Null}" Foreground="White" Margin="66,7,4,3" Grid.Column="3" />
     </Grid>
 </Window>

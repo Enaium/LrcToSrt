@@ -137,6 +137,13 @@ namespace LrcToSrt
                 TB_Message.Text = "不需要移动!";
         }
 
+        //教程
+        private  void BTN_Helper_Click(object sender, RoutedEventArgs e)
+        {
+           System.Diagnostics.Process.Start("https://www.bilibili.com/video/av45475611");  
+        }
+
+
         #endregion
 
         #region 生成SRT
