@@ -234,22 +234,21 @@ namespace LrcToSrt
                             }
                             else
                             {
-                                var curTime = baseTime.Add(TimeSpan.Parse("00:" + match.Value));    // 歌词行                                
-                                // 写入前一行的歌词  LRC格式01:48.292  SRT格式00:01:48,292
-                                await writer.WriteAsync((Index++).ToString() + "\n" +
-                                    string.Format("{0:d2}:{1:d2}:{2:d2},{3:d3}", preTime.Hours, preTime.Minutes, preTime.Seconds, preTime.Milliseconds) + " --> " +
-                                    string.Format("{0:d2}:{1:d2}:{2:d2},{3:d3}", curTime.Hours, curTime.Minutes, curTime.Seconds, curTime.Milliseconds) + "\n" +
-                                    preStr + "\n\n");                     
-                                await writer.FlushAsync();
-                                preTime = curTime;
+                                if (!preStr.Equals("")) {
+                                    var curTime = baseTime.Add(TimeSpan.Parse("00:" + match.Value));    // 歌词行                                
+                                                                                                        // 写入前一行的歌词  LRC格式01:48.292  SRT格式00:01:48,292
+                                    await writer.WriteAsync((Index++).ToString() + "\n" +
+                                        string.Format("{0:d2}:{1:d2}:{2:d2},{3:d3}", preTime.Hours, preTime.Minutes, preTime.Seconds, preTime.Milliseconds) + " --> " +
+                                        string.Format("{0:d2}:{1:d2}:{2:d2},{3:d3}", curTime.Hours, curTime.Minutes, curTime.Seconds, curTime.Milliseconds) + "\n" +
+                                        preStr + "\n\n");
+                                    await writer.FlushAsync();
+                                    preTime = curTime;
+                                }
                             }
                             // 歌词
                             var strMatch = strReg.Match(line);
                             preStr = strMatch.Success ? strMatch.Value : "";
-                            if (preStr.Equals(""))
-                            {
-                                preStr = preStr + "-";
-                            }
+
                         }
                         else
                         {
