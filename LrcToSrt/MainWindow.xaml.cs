@@ -208,7 +208,7 @@ namespace LrcToSrt
             var baseTime = startTime.Add(new TimeSpan(0, 0, 0, 0, lrc.Delay));
             var preTime = baseTime;
             bool isFirstLine = true;
-            string preStr = "";
+            string preStr = "pp";
             StreamReader reader = new StreamReader(lrc.Path, Encoding.UTF8);
 
             StreamWriter writer = new StreamWriter(stream, Encoding.UTF8);
@@ -245,7 +245,11 @@ namespace LrcToSrt
                             }
                             // 歌词
                             var strMatch = strReg.Match(line);
-                            preStr = strMatch.Success ? strMatch.Value : "";                           
+                            preStr = strMatch.Success ? strMatch.Value : "";
+                            if (preStr.Equals(""))
+                            {
+                                preStr = preStr + "-";
+                            }
                         }
                         else
                         {
