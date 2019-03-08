@@ -2,6 +2,9 @@
 LrcToSrt Lrc 转 Srt
 Edit Lightcolour
 
+<a href="https://www.bilibili.com/video/av45475611">视频教程</a>
+
+<a href="">编译后的软件</a>
 
 ## 日志
 
