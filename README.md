@@ -1,10 +1,10 @@
 # LrcToSrt
 LrcToSrt Lrc 转 Srt
-Edit Lightcolour
+Edit Enaium
 
 <a href="https://www.bilibili.com/video/av45475611">视频教程</a>
 
-<a href="https://github.com/Lightcolour-666/LrcToSrt/blob/master/LrcToSrt/bin/Debug/LrcToSrt.exe">编译后的软件</a>
+<a href="https://github.com/Enaium/LrcToSrt/blob/master/LrcToSrt/bin/Debug/LrcToSrt.exe">编译后的软件</a>
 
 ## 日志
 
